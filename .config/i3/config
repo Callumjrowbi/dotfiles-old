@@ -57,6 +57,15 @@ bindsym $mod+Shift+q kill
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 
+# Window Tiles
+set_from_resource $col4 color4 #000000
+set_from_resource $col3 color10 #000000
+
+# class        border        background     text     indicator     child-border
+client.focused $col4 $col3 #222222 #2e9ef4     #e6b3ff
+client.unfocused #222222 #222222 #888888 #292d2e   #222222
+title_align center
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -94,6 +103,16 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+
+# Picom startup
+exec --no-startup-id picom --experimental-backends
+
+# No Border
+for_window [class="^.*"] border none
+
+# Gaps
+gaps inner 10
+gaps outer 3
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
