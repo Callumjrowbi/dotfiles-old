@@ -48,7 +48,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 exec --no-startup-id feh --bg-fill ~/Downloads/wallpaper.jpg
 
 #redshift
-exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+exec --no-startup-id redshift -l 51.38907222763479:-0.41881554948399147
 
 # kill focused window
 bindsym $mod+Shift+q kill
