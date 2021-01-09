@@ -47,6 +47,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # wallpaper
 exec --no-startup-id feh --bg-fill ~/Downloads/wallpaper.jpg
 
+#redshift
+exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -90,10 +93,6 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# cairo dont blur thing
-
-for_window [class="cairo-dock"] floating enable
-
 # split in horizontal orientation
 bindsym $mod+h split h
 
@@ -114,6 +113,9 @@ bindsym $mod+bracketleft exec amixer -D pulse sset Master 1%-
 
 # Picom startup
 exec --no-startup-id picom --experimental-backends
+
+#polybar startup
+exec --no-startup-id ~/.config/polybar/launch.sh
 
 # No Border
 for_window [class="^.*"] border none
