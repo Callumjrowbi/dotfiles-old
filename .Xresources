@@ -1,0 +1,51 @@
+URxvt.font: xft:Hack:size=12
+URxvt.scrollBar:	false
+URxvt.iso14755:		false
+URxvt.iso14755_52:	false
+
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+
+! special
+*.foreground:   #31cc65
+*.background:   #373232
+*.cursorColor:  #31cc65
+
+! black
+*.color0:       #25478c
+*.color8:       #080707
+
+! red
+*.color1:       #a06414
+*.color9:       #a99000
+
+! green
+*.color2:       #c2d320
+*.color10:      #e7ff00
+
+! yellow
+*.color3:       #0072ff
+*.color11:      #5cf905
+
+! blue
+*.color4:       #139d83
+*.color12:      #0a80db
+
+! magenta
+*.color5:       #131124
+*.color13:      #1571b8
+
+! cyan
+*.color6:       #10c8d9
+*.color14:      #0b7fde
+
+! white
+*.color7:       #14f606
+*.color15:      #e8f0eb
+
+URxvt*depth: 32
+URxvt*background: [85]#373232
+
