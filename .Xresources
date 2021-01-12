@@ -47,5 +47,5 @@ URxvt.keysym.Control-Meta-v: builtin-string:
 *.color15:      #e8f0eb
 
 URxvt*depth: 32
-URxvt*background: [85]#373232
+URxvt*background: [30]#373232
 
