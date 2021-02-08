@@ -39,8 +39,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 
 #xrandr
-exec --no-startup-id xrandr --output HDMI-0 --primary
-exec --no-startup-id xrandr --output HDMI-0 --auto --left-of DVI-D-0
+exec --no-startup-id xrandr --output DVI-D-0 --mode 1920x1080 --pos 1920x0 --rotate right --output HDMI-0 --primary --mode 1920x1080 --pos 0x346 --rotate normal --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off --output DP-5 --off
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -51,8 +50,13 @@ bindsym $mod+Return exec i3-sensible-terminal
 # wallpaper
 exec --no-startup-id feh --bg-fill ~/.config/wallpaper.jpg
 
+# rounded border
+
+for_window [class="^.*"] border none 
+
 # redshift
 exec --no-startup-id redshift -l 51.38907222763479:-0.41881554948399147
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -112,14 +116,12 @@ bindsym $mod+bracketleft exec amixer -D pulse sset Master 1%-
 exec --no-startup-id picom --experimental-backends
 
 # Polybar startup
-exec --no-startup-id ~/.config/polybar/launch.sh
-
-# No Border
-for_window [class="^.*"] border
+exec --no-startup-id ~/.config/polybar/start.sh
 
 # Gaps
 gaps inner 10
 gaps outer 3
+gaps top 36
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -132,6 +134,9 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d exec rofi -show run
+
+#flameshot
+bindsym $mod+Print exec flameshot gui
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -201,6 +206,10 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+
+# class                 border  backgr. text    indicator child_border
+client.focused      #808080 #c7b514 #000000 #2e9ef4   #285577
+client.unfocused    #24383b #18a0b5 #ffffff #484e50   #5f676a
 
 bindsym $mod+r mode "resize"
 
