@@ -1,0 +1,144 @@
+[settings]
+format-padding = 1
+format-margin = 1
+
+[cols] 
+background = ${xrdb:background:#fff}
+accent_dark = ${xrdb:color5:#fff}
+accent_light = ${xrdb:color13:#fff}
+
+[bar/root]
+font-0 = "RobotoMono Nerd Font:size=10;2"
+override-redirect = true
+wm-restack = i3
+offset-y=10px
+height=28px
+enable-ipc = true
+
+[bar/left]
+inherit=bar/root
+modules-left = appmenu dunst power
+offset-x = 24px
+width = 107px
+background = ${cols.accent_light}
+
+[bar/tray]
+inherit=bar/root
+background=${cols.background}
+tray-position = center
+width = 15px
+modules-left=empty
+offset-x = 67.5%
+
+[bar/right]
+inherit=bar/root
+background = ${cols.background}
+modules-center = active
+modules-right = audio date
+offset-x = 100%:-559px
+width = 535px
+line-size = 2px
+
+[module/empty]
+type=custom/text
+content=a
+
+# left modules
+
+[module/appmenu]
+type=custom/text
+content=
+click-left=rofi -show drun -modi drun -display-drun "Applications"
+content-foreground = ${cols.background}
+
+[module/ram]
+type=internal/memory
+interval=3
+label = ﬙ %percentage_used%%
+label-foreground = ${cols.background}
+
+[module/cpu]
+type=internal/cpu
+interval=1
+label = ﬙ %percentage%%
+label-foreground = ${cols.background}
+# centre modules
+
+[module/active]
+type=custom/script
+exec = /home/callum/.config/polybar/scripts/i3-windows.py
+tail = true
+
+# right modules
+
+[module/audio]
+type=internal/pulseaudio
+
+format-volume-underline = ${cols.accent_light}
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奔
+ramp-volume-2 = 墳
+
+format-volume = <ramp-volume> <label-volume>
+
+format-muted-underline = ${cols.accent_light}
+label-muted = ﱝ %percentage%%
+
+use-ui-max = false
+
+[module/net-base]
+type=internal/network
+format-connected-underline = ${cols.accent_light}
+format-disconnected-underline = ${cols.accent_light}
+label-connected = %local_ip%
+
+[module/wifi]
+inherit=module/net-base
+interface=wlan0
+format-connected = 直 <label-connected>
+
+[module/date]
+type = internal/date
+label = %time% %date%
+date = %b %d%
+time = %H:%M
+format-underline = ${cols.accent_light}
+
+[module/power]
+type=custom/text
+content=襤
+click-left=~/scripts/shutdown.sh
+format-margin = 0
+content-foreground = ${cols.background}
+
+[module/dunst]
+type = custom/ipc
+initial = 1
+format-margin = 0
+
+hook-0 = echo "%{A1:notify-send "DUNST_COMMAND_PAUSE" && polybar-msg hook dunst 2:}%{A}" &
+hook-1 = echo "%{A1:notify-send "DUNST_COMMAND_RESUME" && polybar-msg hook dunst 1:}%{A}" &
+format-foreground = ${cols.background}
+
+[module/battery]
+type = internal/battery
+
+battery=BAT0
+adapter=ADP1
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+format-discharging = <ramp-capacity>  <label-discharging>
+
+label-full =  100%
+label-charging = ﮣ %percentage%%
+
+format-charging-underline = ${cols.accent_light}
+format-discharging-underline = ${cols.accent_light}
+format-full-underline = ${cols.accent_light}
+# vi: ft=dosini
