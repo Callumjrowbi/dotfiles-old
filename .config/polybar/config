@@ -1,6 +1,7 @@
 [settings]
 format-padding = 1
 format-margin = 1
+screenchange-reload = true
 
 [cols] 
 background = ${xrdb:background:#fff}
@@ -9,16 +10,17 @@ accent_light = ${xrdb:color13:#fff}
 
 [bar/root]
 font-0 = "RobotoMono Nerd Font:size=10;2"
+font-1 = "Noto Sans Mono CJK JP:size=10;2"
 override-redirect = true
 wm-restack = i3
-offset-y=10px
+offset-y=8px
 height=28px
 enable-ipc = true
 
 [bar/left]
 inherit=bar/root
 modules-left = appmenu dunst power
-offset-x = 24px
+offset-x = 12px
 width = 107px
 background = ${cols.accent_light}
 
@@ -26,18 +28,19 @@ background = ${cols.accent_light}
 inherit=bar/root
 background=${cols.background}
 tray-position = center
-width = 15px
+width = 17px
 modules-left=empty
-offset-x = 67.5%
+offset-x = 100%:-620px
 
 [bar/right]
 inherit=bar/root
 background = ${cols.background}
-modules-center = active
-modules-right = audio date
-offset-x = 100%:-559px
-width = 535px
-line-size = 2px
+ 
+modules-left = workspaces
+modules-right = active audio battery date
+offset-x = 100%:-588px
+width = 575px
+line-size = 5px
 
 [module/empty]
 type=custom/text
@@ -51,6 +54,11 @@ content=
 click-left=rofi -show drun -modi drun -display-drun "Applications"
 content-foreground = ${cols.background}
 
+[module/active]
+type=custom/script
+exec = /home/callum/.config/polybar/scripts/i3-windows.py
+tail = true
+
 [module/ram]
 type=internal/memory
 interval=3
@@ -62,12 +70,17 @@ type=internal/cpu
 interval=1
 label = ﬙ %percentage%%
 label-foreground = ${cols.background}
-# centre modules
 
-[module/active]
-type=custom/script
-exec = /home/callum/.config/polybar/scripts/i3-windows.py
-tail = true
+[module/workspaces]
+type=internal/i3
+#pin-workspaces = true
+#strip-wsnumbers = true
+#index-sort = true
+#label-focused-foreground = ${cols.background}
+label-focused-foreground = ${cols.accent_light}
+format-margin = 1
+format-padding = 0
+# centre modules
 
 # right modules
 
@@ -98,6 +111,12 @@ inherit=module/net-base
 interface=wlan0
 format-connected = 直 <label-connected>
 
+[module/backlight]
+type=internal/backlight
+card=intel_backlight
+label=  %percentage%%
+format-underline = ${cols.accent_light}
+
 [module/date]
 type = internal/date
 label = %time% %date%
@@ -124,7 +143,7 @@ format-foreground = ${cols.background}
 [module/battery]
 type = internal/battery
 
-battery=BAT0
+battery=BAT1
 adapter=ADP1
 
 ramp-capacity-0 = 
@@ -141,4 +160,5 @@ label-charging = ﮣ %percentage%%
 format-charging-underline = ${cols.accent_light}
 format-discharging-underline = ${cols.accent_light}
 format-full-underline = ${cols.accent_light}
+
 # vi: ft=dosini

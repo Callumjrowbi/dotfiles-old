@@ -50,9 +50,9 @@ window {
 	background-color: #1a2b41D9;
 	width:200px;
 	location: north;
-	y-offset: 10px;
-        x-offset: -245px;
-	width: 1000px;
+	y-offset: 8px;
+        x-offset: -250px;
+	width: 600px;
 	height: 28px;
 }
 
