@@ -139,6 +139,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d exec rofi -show run
 
 #flameshot
+exec --no-startup-id flameshot
 bindsym Print exec flameshot gui
 
 # Define names for default workspaces for which we configure key bindings later on.
