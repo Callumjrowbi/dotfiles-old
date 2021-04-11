@@ -30,7 +30,7 @@ background=${cols.background}
 tray-position = center
 width = 17px
 modules-left=empty
-offset-x = 100%:-620px
+offset-x = 100%:-630px
 
 [bar/right]
 inherit=bar/root
