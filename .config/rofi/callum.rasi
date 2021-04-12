@@ -51,8 +51,8 @@ window {
 	width:200px;
 	location: north;
 	y-offset: 8px;
-        x-offset: -250px;
-	width: 600px;
+        x-offset: -273px;
+	width: 550px;
 	height: 28px;
 }
 
