@@ -42,7 +42,7 @@ bindsym $mod+p exec teams libreoffice thunar
 
 
 # xrandr
-exec --no-startup-id xrandr --output DVI-D-0 --mode 1920x1080 --pos 1920x0 --rotate right --output HDMI-0 --primary --mode 1920x1080 --pos 0x346 --rotate normal --output DP-0 --off --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off --output DP-5 --off
+exec --no-startup-id xrandr --output DVI-D-0 --mode 1920x1080 --pos 3000x0 --rotate right --output HDMI-0 --primary --mode 1920x1080 --pos 1080x373 --rotate normal --output DP-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off --output DP-5 --off
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
