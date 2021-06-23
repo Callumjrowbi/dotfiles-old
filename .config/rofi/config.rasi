@@ -1,3 +1,6 @@
+/** Basic config file **/
+
 configuration {
-	theme: "callum.rasi";
+  show-icons:         true;
+  icon-theme:         "Papirus";
 }

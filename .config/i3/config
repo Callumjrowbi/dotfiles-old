@@ -37,10 +37,6 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-# School Mode
-bindsym $mod+p exec teams libreoffice thunar
-
-
 # xrandr
 exec --no-startup-id xrandr --output DVI-D-0 --mode 1920x1080 --pos 3000x0 --rotate right --output HDMI-0 --primary --mode 1920x1080 --pos 1080x373 --rotate normal --output DP-0 --mode 1920x1080 --pos 0x0 --rotate left --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-4 --off --output DP-5 --off
 
@@ -71,7 +67,7 @@ bindsym $mod+Shift+q kill
 bindcode $mod+d exec rofi -modi drun,run -show drun
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
-bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+d exec --no-startup-id exec .config/rofi/launchers/colorful/launcher.sh -show run
 
 # change focus
 bindsym $mod+j focus left
@@ -119,12 +115,13 @@ bindsym $mod+bracketleft exec amixer -D pulse sset Master 1%-
 exec --no-startup-id picom --experimental-backends
 
 # Polybar startup
-exec --no-startup-id ~/.config/polybar/start.sh
+exec --no-startup-id bash ~/.config/polybar/launch.sh --cuts
+exec --no-startup-id bash ~/.config/polybar/material/scripts/random.sh
 
 # Gaps
 gaps inner 10
 gaps outer 3
-gaps top 36
+gaps top 10
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -135,8 +132,8 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
-# focus the child container
-#bindsym $mod+d exec rofi -show run
+# rofi
+# bindsym $mod+d exec .config/rofi/launchers/colorful/launcher.sh
 
 #flameshot
 bindsym Print exec flameshot gui
@@ -184,7 +181,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec .config/rofi/powermenu/powermenu.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
